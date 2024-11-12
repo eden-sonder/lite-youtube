@@ -25,19 +25,19 @@ export default class LVStylesHandler extends BaseElement {
         }
 
         #frame, #fallbackPlaceholder, iframe, #custom-placeholder {
-          position: absolute;
-          height:100%;
-          width:100%;
+        	position: absolute;
+        	height:100%;
+        	width:100%;
+			inset-inline-start: 0;
+			inset-block-start: 0;
         }
 
         #frame {
-          cursor: pointer;
+        	cursor: pointer;
         }
 		
 		#fallbackPlaceholder, #custom-placeholder {
 			object-fit: cover;
-			inset-inline-start: 0;
-			inset-block-start: 0;
 		}
 
 	    #frame::before {
