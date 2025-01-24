@@ -160,7 +160,7 @@ class LiteVimeo extends LVStylesHandler {
 	 * @returns {Promise<any>|void}
 	 */
 	initImagePlaceholder = async () => {
-		if (this.isUnlisted) {
+		if (this.isUnlisted || this.hasCustomPlaceholder) {
 			return;
 		}
 
