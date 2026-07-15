@@ -1,10 +1,10 @@
 {
-  "name": "@justinribeiro/lite-youtube",
-  "description": "A web component that loads YouTube embed iframes faster. ShadowDom based version of Paul Irish' concept.",
-  "author": "Justin Ribeiro <justin@justinribeiro.com>",
+  "name": "@eden-sonder/lite-youtube",
+  "description": "A fork of the web component that based on @justinribeiro's YouTube embed. ShadowDom based version of Paul Irish' concept.",
+  "author": "Eden Thompson",
   "repository": {
     "type": "git",
-    "url": "git@github.com:justinribeiro/lite-youtube.git"
+    "url": "git@github.com:eden-sonder/lite-youtube.git"
   },
   "scripts": {
     "build": "tsc",

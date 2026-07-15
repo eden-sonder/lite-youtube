@@ -129,15 +129,24 @@ export class LiteYTEmbed extends HTMLElement {
     }
     shadowDom.innerHTML = `
       <style ${nonce}>
-        :host {
-          --aspect-ratio: var(--lite-youtube-aspect-ratio, 16 / 9);
-          --aspect-ratio-short: var(--lite-youtube-aspect-ratio-short, 9 / 16);
-          --frame-shadow-visible: var(--lite-youtube-frame-shadow-visible, yes);
-          contain: content;
-          display: block;
-          position: relative;
-          width: 100%;
-          aspect-ratio: var(--aspect-ratio);
+           :host {
+            --aspect-ratio: var(--lite-youtube-aspect-ratio, 16 / 9);
+            --aspect-ratio-short: var(--lite-youtube-aspect-ratio-short, 9 / 16);
+            --frame-shadow-visible: var(--lite-youtube-frame-shadow-visible, yes);
+            --video-play-button-width: 98px;
+            --video-play-button-height: 98px;
+            --video-play-button-transition: transform .3s ease-in-out;
+            --video-play-button-bg: url("data:image/svg+xml,	%3Csvg width='98' height='98' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 98 98'%3E%3Ccircle opacity='.2' fill='black' cx='49' cy='49' r='49'/%3E%3Cpath fill='white' d='M37,34.64v30.72c0,.75.79,1.23,1.46.89l29.82-15.31c.72-.37.72-1.4,0-1.78l-29.82-15.41c-.67-.34-1%0A.46.14-1.46.89Z'/%3E%3C/svg%3E");
+            contain: content;
+            display: block;
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            contain: content;
+            display: block;
+            position: relative;
+            width: 100%;
+            aspect-ratio: var(--aspect-ratio);
         }
 
         @media (max-width: 40em) {
@@ -174,40 +183,32 @@ export class LiteYTEmbed extends HTMLElement {
             z-index: 1;
           }
         }
-
         #playButton {
-          width: 68px;
-          height: 48px;
-          background-color: transparent;
-          background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 68 48"><path d="M66.52 7.74c-.78-2.93-2.49-5.41-5.42-6.19C55.79.13 34 0 34 0S12.21.13 6.9 1.55c-2.93.78-4.63 3.26-5.42 6.19C.06 13.05 0 24 0 24s.06 10.95 1.48 16.26c.78 2.93 2.49 5.41 5.42 6.19C12.21 47.87 34 48 34 48s21.79-.13 27.1-1.55c2.93-.78 4.64-3.26 5.42-6.19C67.94 34.95 68 24 68 24s-.06-10.95-1.48-16.26z" fill="red"/><path d="M45 24 27 14v20" fill="white"/></svg>');
-          z-index: 1;
-          border: 0;
-          border-radius: inherit;
-        }
-
-        #playButton:before {
-          content: '';
-          border-style: solid;
-          border-width: 11px 0 11px 19px;
-          border-color: transparent transparent transparent #fff;
-        }
-
-        #playButton,
-        #playButton:before {
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          transform: translate3d(-50%, -50%, 0);
-          cursor: inherit;
-        }
-
+	    	    width: var(--video-play-button-width);
+            height: var(--video-play-button-height);
+            transition: var(--video-play-button-transition);
+            inset: 0;
+            margin: auto;
+            background-image: var(--video-play-button-bg);
+            position: absolute;
+            background-color: transparent;
+            border: none;
+            z-index: 1;
+            pointer-events: none;
+	  	}
+		
+		#frame:hover #playButton {
+			opacity: 1;
+			cursor: pointer;
+            transform: scale(1.1);
+		}
         /* Post-click styles */
         .activated {
           cursor: unset;
         }
 
         #frame.activated::before,
-        #frame.activated > #playButton {
+        #frame.activated #playButton {
           display: none;
         }
       </style>
@@ -219,7 +220,7 @@ export class LiteYTEmbed extends HTMLElement {
             <img id="fallbackPlaceholder" referrerpolicy="origin" loading="lazy">
           </slot>
         </picture>
-        <button id="playButton"></button>
+        <slot name="button"><button id="playButton"></button></slot>
       </div>
     `;
     this.domRefFrame = shadowDom.querySelector<HTMLDivElement>('#frame')!;
