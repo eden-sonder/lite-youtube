@@ -1,7 +1,3 @@
-[![npm version](https://badge.fury.io/js/@justinribeiro%2Flite-youtube.svg)](https://badge.fury.io/js/@justinribeiro%2Flite-youtube) ![min+gzip](https://img.shields.io/badge/min%2Bgzip-2.2kb-blue) ![min+br](https://img.shields.io/badge/min%2Bbr-1.7kb-blue) [![](https://data.jsdelivr.com/v1/package/npm/@justinribeiro/lite-youtube/badge)](https://www.jsdelivr.com/package/npm/@justinribeiro/lite-youtube)
-
-![Statements](https://img.shields.io/badge/statements-98.22%25-brightgreen.svg?style=flat) ![Branches](https://img.shields.io/badge/branches-91.17%25-brightgreen.svg?style=flat) ![Functions](https://img.shields.io/badge/functions-100%25-brightgreen.svg?style=flat) ![Lines](https://img.shields.io/badge/lines-98.22%25-brightgreen.svg?style=flat)
-
 # \<lite-youtube\>
 
 > A web component that renders YouTube embeds faster. The ShadowDom web component version of Paul's [lite-youtube-embed](https://github.com/paulirish/lite-youtube-embed).
@@ -23,6 +19,7 @@
 - _new in v1.4_: Adds `short` attr for enabling experimental YouTube Shorts mobile interaction support. See (example video)[https://www.youtube.com/watch?v=aw7CRQTuRfo] for details.
 - _new in v1.5_: Adds support for nonce attribute via `window.liteYouTubeNonce` for CSP 2/3 support.
 - _new in v1.6_: Adds `autoPause` for pausing videos scrolled off screen; adds `--lite-youtube-aspect-ratio` CSS custom property create custom aspect ratio videos; adds `--lite-youtube-frame-shadow-visible` CSS custom property to disable frame shadow (flat look); adds a named slot `image` that allows for setting custom poster image; adds `credentialless` for COEP
+- _new in v1.6_: Fixes for Firefox
 
 ## Install via package manager
 
@@ -32,15 +29,15 @@ available on NPM:
 To install, use your package manager of choice:
 
 ```sh
-npm i @justinribeiro/lite-youtube
+npm i @eden-sonder/lite-youtube
 # or
-yarn add @justinribeiro/lite-youtube
+yarn add @eden-sonder/lite-youtube
 ```
 
 After install, import into your project:
 
 ```js
-import '@justinribeiro/lite-youtube';
+import '@eden-sonder/lite-youtube';
 ```
 
 ## Install with CDN
